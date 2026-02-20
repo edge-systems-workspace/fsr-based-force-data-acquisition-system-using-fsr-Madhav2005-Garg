@@ -1,10 +1,9 @@
 #include <Arduino.h>
-/**
- * @file main.cpp
- * @brief Embedded Force Measurement System using FSR
- * @author rishabh-rb
- * @date 2026-02-20
- */
+
+#define FSR_PIN A0
+
+int fsrValue = 0;
+int threshold = 200; // ADC trigger point
 
 void setup() {
 }
