@@ -1,11 +1,13 @@
 #include <Arduino.h>
+/**
+ * @file main.cpp
+ * @brief Embedded Force Measurement System using FSR
+ */
 
 #define FSR_PIN A0
 
 int fsrValue = 0;
-int threshold = 200; // ADC trigger point
-
-// ... definitions from previous commit ...
+int threshold = 200;
 
 void setup() {
     Serial.begin(9600);
@@ -13,14 +15,19 @@ void setup() {
     delay(1000);
 }
 
-// ... setup from previous commit ...
-
 void loop() {
-    // Read analog value from FSR (0 - 1023)
     fsrValue = analogRead(FSR_PIN);
 
     Serial.print("FSR Value: ");
     Serial.println(fsrValue);
 
-    delay(1000); // Sampling rate
+    // Threshold logic to detect physical interaction
+    if (fsrValue > threshold) {
+        Serial.println("Status: Pressure Detected");
+    } else {
+        Serial.println("Status: No Significant Pressure");
+    }
+
+    Serial.println("-----------------------------");
+    delay(1000);
 }
