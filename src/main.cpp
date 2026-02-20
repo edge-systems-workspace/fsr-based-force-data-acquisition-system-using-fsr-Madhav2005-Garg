@@ -13,5 +13,14 @@ void setup() {
     delay(1000);
 }
 
+// ... setup from previous commit ...
+
 void loop() {
+    // Read analog value from FSR (0 - 1023)
+    fsrValue = analogRead(FSR_PIN);
+
+    Serial.print("FSR Value: ");
+    Serial.println(fsrValue);
+
+    delay(1000); // Sampling rate
 }
